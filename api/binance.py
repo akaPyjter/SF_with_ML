@@ -5,10 +5,10 @@ import time
 from helpers.functions import count_time_from_2010, TimeFrame, Symbols
 
 
-def get_binance_historical_data(symbol=Symbols, interval=TimeFrame):
+def get_binance_historical_data(symbol=Symbols, interval=TimeFrame, last_candle:int=None):
     url = "https://api.binance.com/api/v3/klines"
     total_candles = []
-    end_time = None
+    end_time = None if last_candle is None else last_candle
     limit = count_time_from_2010(interval.value['seconds'])
 
     while len(total_candles) < limit:
@@ -31,6 +31,8 @@ def get_binance_historical_data(symbol=Symbols, interval=TimeFrame):
 
 
         end_time = data[-1][0] - 1
+        if end_time < last_candle:
+            break
 
         time.sleep(1)
 
