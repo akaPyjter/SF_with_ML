@@ -6,10 +6,10 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 
-# btc = pd.read_csv("../data/btc_1h.csv")
-# btc['avg'] = btc[['high', 'low']].mean(axis=1)
-# btc.drop(btc.columns[[0,2,3,4,5,6]],axis=1,  inplace=True)
-# btc.to_csv("../data/btc_1h_linear.csv")
+btc = pd.read_csv("../data/btc_1h.csv")
+btc['avg'] = btc[['high', 'low']].mean(axis=1)
+btc.drop(btc.columns[[0,2,3,4,5,6]],axis=1,  inplace=True)
+btc.to_csv("../data/btc_1h_linear.csv")
 
 btc = pd.read_csv("../data/btc_1h_linear.csv")
 X = btc.iloc[:, 1].values
