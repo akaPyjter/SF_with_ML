@@ -20,7 +20,6 @@ def get_binance_historical_data(symbol=Symbols, interval=TimeFrame, last_candle:
 
         if end_time:
             params["endTime"] = end_time
-        print(params)
         response = requests.get(url, params=params)
         data = response.json()
 
